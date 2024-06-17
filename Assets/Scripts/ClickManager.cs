@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class ClickManager : MonoBehaviour
 {
@@ -14,6 +11,8 @@ public class ClickManager : MonoBehaviour
     public int myClickCoin = 1;
     public int autoClickCoin = 1;
 
+    public AutoClickData[] autoClickData;
+
     public void OnClick()
     {
         coin += myClickCoin;
@@ -22,8 +21,39 @@ public class ClickManager : MonoBehaviour
 
     public void AutoClick()
     {
-        coin += autoClickCoin;
-        UpdateText() ;
+        foreach (var button in autoClickData)
+        {
+            if (Time.time >= button.clickDelay && button.upgradeLevel > 0)
+            {
+                coin += button.autoClickCoin * button.upgradeLevel;
+                button.clickDelay = Time.time + button.clickDelay;
+            }
+        }
+        UpdateText();
+    }
+
+    public void UpgradeAutoClick(int buttonIndex)
+    {
+        AutoClickData button = autoClickData[buttonIndex];
+
+        if (coin >= button.upgradeCost)
+        {
+            coin -= button.upgradeCost;
+            button.upgradeCost *= 2;
+            button.upgradeLevel++;
+            UpdateText();
+        }
+    }
+
+    public void UpdateAutoClickData(float reducetime)
+    {
+        foreach (var button in autoClickData)
+        {
+            if (button.upgradeLevel > 0)
+            {
+                button.clickDelay -= reducetime; // 자동 클릭 간격을 감소시킵니다.
+            }
+        }
     }
 
     public void UpdateText()
