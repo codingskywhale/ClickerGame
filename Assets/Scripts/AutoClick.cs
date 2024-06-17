@@ -14,7 +14,7 @@ public class AutoClick : MonoBehaviour
         if (timer >= rangeTime)
         {
             timer = 0;
-            clickManager.OnClick();
+            clickManager.AutoClick();
         }
     }
 }
