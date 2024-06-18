@@ -882,7 +882,7 @@ GameObject:
   - component: {fileID: 478656519}
   - component: {fileID: 478656518}
   m_Layer: 5
-  m_Name: Level
+  m_Name: Level1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1698,6 +1698,10 @@ MonoBehaviour:
   upgradeCostText: {fileID: 1363781568}
   upgradeCost: 10
   upgradeLevel: 1
+  autoClickUpgrades:
+  - upgradeLevelText: {fileID: 478656518}
+    upgradeCostText: {fileID: 1661606342}
+    autoClickData: {fileID: 11400000, guid: 251c903f4905000479bfb9ea4d24cf5f, type: 2}
 --- !u!1 &963912834
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,7 +3498,7 @@ GameObject:
   - component: {fileID: 1661606343}
   - component: {fileID: 1661606342}
   m_Layer: 5
-  m_Name: Cost
+  m_Name: Cost1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3539,7 +3543,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 15
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 802e8771cc10bae4c8b37a37e695952d, type: 2}
   m_sharedMaterial: {fileID: -2682417567465745715, guid: 802e8771cc10bae4c8b37a37e695952d, type: 2}

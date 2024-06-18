@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AutoClickData
   m_EditorClassIdentifier: 
   autoClickCoin: 1
-  clickDelay: 1
+  clickDelay: 2
   upgradeCost: 10
   upgradeLevel: 1
   autoClickDataIndex: 0

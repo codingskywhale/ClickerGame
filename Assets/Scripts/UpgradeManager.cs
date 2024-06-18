@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class UpgradeManager : MonoBehaviour
 {
@@ -7,11 +8,12 @@ public class UpgradeManager : MonoBehaviour
     public TextMeshProUGUI upgradeLevelText;
     public TextMeshProUGUI upgradeCostText;
 
-    private AutoClickData autoClickData;
-
     [Header("My Click")]
     public int upgradeCost;
     public int upgradeLevel = 1;
+
+    [Header("Auto Click")]
+    public List<AutoClickUpgrade> autoClickUpgrades;
 
     private void Awake()
     {
@@ -20,7 +22,7 @@ public class UpgradeManager : MonoBehaviour
 
     public void MyUpgrade()
     {
-        if (upgradeCost < clickManager.coin)
+        if (clickManager.coin >= upgradeCost)
         {
             clickManager.coin -= upgradeCost;
             upgradeCost += Mathf.CeilToInt(upgradeCost * 0.25f);
@@ -31,22 +33,23 @@ public class UpgradeManager : MonoBehaviour
         }
     }
 
-    public void OnAutoClickUpgradeButton()
+    public void OnAutoClickUpgradeButton(int dataIndex)
     {
-        UpgradeAutoClick(autoClickData.autoClickDataIndex);
+        UpgradeAutoClick(dataIndex);
     }
 
     public void UpgradeAutoClick(int dataIndex)
     {
-        AutoClickData data = clickManager.autoClickData[dataIndex];
+        AutoClickUpgrade upgrade = autoClickUpgrades[dataIndex];
+        AutoClickData data = upgrade.autoClickData;
 
         if (clickManager.coin >= data.upgradeCost)
         {
             clickManager.coin -= data.upgradeCost;
             data.upgradeLevel++;
-            data.upgradeCost = Mathf.CeilToInt(data.upgradeCost * 1.5f); 
+            data.upgradeCost = Mathf.CeilToInt(data.upgradeCost * 1.5f);
 
-            if(data.clickDelay > 0)
+            if (data.clickDelay > 0)
             {
                 data.clickDelay -= data.reducetime;
             }
@@ -60,5 +63,11 @@ public class UpgradeManager : MonoBehaviour
     {
         upgradeCostText.text = upgradeCost.ToString();
         upgradeLevelText.text = upgradeLevel.ToString();
+
+        foreach (var upgrade in autoClickUpgrades)
+        {
+            upgrade.upgradeCostText.text = upgrade.autoClickData.upgradeCost.ToString();
+            upgrade.upgradeLevelText.text = upgrade.autoClickData.upgradeLevel.ToString();
+        }
     }
 }
