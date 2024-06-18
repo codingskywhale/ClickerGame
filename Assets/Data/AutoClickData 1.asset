@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a6d00bef16c0b74fb029e66468d2069, type: 3}
   m_Name: AutoClickData 1
   m_EditorClassIdentifier: 
-  autoClickCoin: 1
-  clickDelay: 2
-  upgradeCost: 10
+  autoClickCoin: 5
+  clickDelay: 5
+  upgradeCost: 20
   upgradeLevel: 1
   autoClickDataIndex: 0
   reducetime: 0.1

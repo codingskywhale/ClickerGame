@@ -24,13 +24,13 @@ public class ClickManager : MonoBehaviour
     {
         foreach (var data in autoClickData)
         {
-            timer += Time.deltaTime;
             if (timer >= data.clickDelay && data.upgradeLevel > 0)
             {
-                timer = 0f;
                 coin += data.autoClickCoin * data.upgradeLevel;
+                timer = 0f;
             }
         }
+        timer += Time.deltaTime;
         UpdateText();
     }
 

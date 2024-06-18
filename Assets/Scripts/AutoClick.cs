@@ -7,7 +7,9 @@ public class AutoClick : MonoBehaviour
     private void Update()
     {
         if (clickManager == null)
+        {
             return;
+        }
 
         clickManager.AutoClick();
     }

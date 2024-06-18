@@ -13,7 +13,7 @@ public class UpgradeManager : MonoBehaviour
     public int upgradeCost;
     public int upgradeLevel = 1;
 
-    private void Start()
+    private void Awake()
     {
         clickManager = FindObjectOfType<ClickManager>();
     }
