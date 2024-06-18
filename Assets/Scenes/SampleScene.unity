@@ -1313,10 +1313,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1120710450}
-        m_TargetAssemblyTypeName: UpgradeManager, Assembly-CSharp
-        m_MethodName: MyUpgrade
-        m_Mode: 1
+      - m_Target: {fileID: 963912839}
+        m_TargetAssemblyTypeName: ClickManager, Assembly-CSharp
+        m_MethodName: UpgradeAutoClick
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1619,8 +1619,7 @@ MonoBehaviour:
   upgradeCost: 0
   upgradeLevel: 1
   AutoupgradeCost: 0
-  AutoupgradeLevel: 1
-  reducetime: 0
+  reducetime: 0.1
 --- !u!1 &963912834
 GameObject:
   m_ObjectHideFlags: 0
@@ -1749,6 +1748,11 @@ MonoBehaviour:
   coin: 0
   myClickCoin: 1
   autoClickCoin: 1
+  autoClickData:
+  - autoClickCoin: 1
+    clickDelay: 2
+    upgradeCost: 10
+    upgradeLevel: 1
 --- !u!114 &963912840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,8 +1766,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clickManager: {fileID: 963912839}
-  rangeTime: 5
-  timer: 0
 --- !u!1 &975790602
 GameObject:
   m_ObjectHideFlags: 0
@@ -2194,7 +2196,6 @@ MonoBehaviour:
   upgradeCost: 10
   upgradeLevel: 1
   AutoupgradeCost: 20
-  AutoupgradeLevel: 1
   reducetime: 0.1
 --- !u!1 &1363781566
 GameObject:
@@ -2570,7 +2571,6 @@ MonoBehaviour:
   upgradeCost: 10
   upgradeLevel: 1
   AutoupgradeCost: 20
-  AutoupgradeLevel: 1
   reducetime: 0.1
 --- !u!1 &1446618462
 GameObject:
